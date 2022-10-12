@@ -45,9 +45,21 @@ const ModalEdit = ({ valAksi, token }) => {
       pph: Yup.number().required('PPh is required'),
     }),
     onSubmit: values => {
-      console.log('====================================')
-      console.log(values)
-      console.log('====================================')
+      // const initValue = {
+      //   suplier_type: values.suplier_type,
+      //   id_suplier: values.id_suplier,
+      //   sup_name: values.sup_name,
+      //   alamat: values.alamat,
+      //   kota: values.kota,
+      //   phone: values.phone,
+      //   email: values.email,
+      //   bank_akun: values.bank_akun,
+      //   akun_name: values.akun_name,
+      //   akun_number: parseInt(values.akun_number),
+      //   contact_person_sup: values.contact_person_sup,
+      //   ppn: parseInt(values.ppn),
+      //   pph: parseInt(values.pph)
+      // }
       dispatch(editSupplier({ data: values, token: token }))
     }
   })

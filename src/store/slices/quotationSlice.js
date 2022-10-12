@@ -11,7 +11,6 @@ export const getQuotation = createAsyncThunk(
     const results = await axios.get(`quotation?limit=${perPage}&page=${page}`, {
       headers: headers
     })
-    console.log(results.data)
     return results.data
   }
 )
@@ -41,31 +40,31 @@ export const addQuotation = createAsyncThunk(
   }
 )
 
-// export const editCustomer = createAsyncThunk(
-//   'quotationSlice/editCustomer',
-//   async ({ data = null, token = '' }) => {
-//     const { id, nama, alamat, kota, email, phone, contact_person } = data
-//     const headers = {
-//       'Content-Type': 'application/json',
-//       Authorization: 'Bearer ' + token
-//     }
-//     const results = await axios.put(
-//       `quotation/${id}`,
-//       {
-//         nama,
-//         alamat,
-//         kota,
-//         email,
-//         phone,
-//         contact_person
-//       },
-//       {
-//         headers: headers
-//       }
-//     )
-//     return results.data
-//   }
-// )
+export const editCustomer = createAsyncThunk(
+  'quotationSlice/editCustomer',
+  async ({ data = null, token = '' }) => {
+    const { id, nama, alamat, kota, email, phone, contact_person } = data
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    }
+    const results = await axios.put(
+      `quotation/${id}`,
+      {
+        nama,
+        alamat,
+        kota,
+        email,
+        phone,
+        contact_person
+      },
+      {
+        headers: headers
+      }
+    )
+    return results.data
+  }
+)
 
 // export const deleteCustomer = createAsyncThunk(
 //   'quotationSlice/deleteCustomer',

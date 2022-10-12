@@ -279,8 +279,8 @@ const Quotation = () => {
                 />
             </div>
             <ModalTambah val={val} token={token} />
-            {/* <ModalEdit valAksi={valAksi} />
-            <ModalDetail valAksi={valAksi} />
+            <ModalEdit valAksi={valAksi} />
+            {/* <ModalDetail valAksi={valAksi} />
             <ModalRemove valId={valAksi.id} /> */}
         </>
     )
