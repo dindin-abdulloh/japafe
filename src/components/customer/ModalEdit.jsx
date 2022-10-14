@@ -25,7 +25,8 @@ const ModalEdit = ({ valAksi, token }) => {
       kota: '',
       email: '',
       phone: '',
-      contact_person: '',
+      cuskontak: '',
+      cuskontak: []
 
     },
     validationSchema: Yup.object({
@@ -56,7 +57,7 @@ const ModalEdit = ({ valAksi, token }) => {
         kota: valAksi.kota,
         phone: valAksi.phone,
         email: valAksi.email,
-        contact_person: valAksi.contact_person
+        cuskontak: valAksi.cuskontak
       }
     ))
   }, [valAksi])
@@ -224,57 +225,83 @@ const ModalEdit = ({ valAksi, token }) => {
                     }
                   </div>
                 </div>
-                <div className='form-group mb-2'>
-                  <label
-                    htmlFor='exampleInputEmail2'
-                    className='tw-form-label tw-text-sm tw-font-bold tw-inline-block tw-mb-2 tw-text-gray-700'
-                  >
-                    Contact Person
-                  </label>
-                  <div className='tw-relative'>
-                    <input
-                      type='text'
-                      className={`${formik.touched.contact_person && formik.errors.contact_person ? `tw-border-red-500` : `tw-border-gray-300`} tw-form-control tw-block tw-w-full tw-px-3 tw-py-2 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none`}
-                      id='contact_person'
-                      onChange={formik.handleChange}
-                      value={formik.values.contact_person}
-                      placeholder='City'
-                    />
-                    {
-                      formik.touched.contact_person && formik.errors.contact_person && <p className='tw-absolute tw-text-red-500 -tw-top-4 tw-right-0 tw-m-0 tw-text-xs'>
-                        {formik.errors.contact_person}
-                      </p>
-                    }
-                  </div>
-                </div>
-                {/* <div className='form-group mb-2'>
-                  <label
-                    htmlFor='exampleInputEmail2'
-                    className='tw-form-label tw-text-sm tw-font-bold tw-inline-block tw-mb-2 tw-text-gray-700'
-                  >
-                    Phone Number
-                  </label>
-                  <input
-                    type='text'
-                    className='tw-form-control tw-block tw-w-full tw-px-3 tw-py-2 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none'
-                    id='officeEmail'
-                    placeholder='Phone number'
-                  />
-                </div>
-                <div className='form-group mb-2'>
-                  <label
-                    htmlFor='exampleInputEmail2'
-                    className='tw-form-label tw-text-sm tw-font-bold tw-inline-block tw-mb-2 tw-text-gray-700'
-                  >
-                    Email
-                  </label>
-                  <input
-                    type='text'
-                    className='tw-form-control tw-block tw-w-full tw-px-3 tw-py-2 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none'
-                    id='Email'
-                    placeholder='Email'
-                  />
-                </div> */}
+                
+                
+                {formik.values.cuskontak.map((val) =>{
+                  return (
+                    <div key={val.id}>
+                    <div  className='form-group mb-2'>
+                      <label
+                        htmlFor='exampleInputEmail2'
+                        className='tw-form-label tw-text-sm tw-font-bold tw-inline-block tw-mb-2 tw-text-gray-700'
+                      >
+                        Contact Person
+                      </label>
+                      <div className='tw-relative'>
+                        <input
+                          type='text'
+                          className={`${formik.touched.cuskontak && formik.errors.cuskontak ? `tw-border-red-500` : `tw-border-gray-300`} tw-form-control tw-block tw-w-full tw-px-3 tw-py-2 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none`}
+                          id='contact_person'
+                          onChange={formik.handleChange}
+                          value={val.contact_person}
+                          placeholder='City'
+                        />
+                        {
+                          formik.touched.cuskontak && formik.errors.cuskontak && <p className='tw-absolute tw-text-red-500 -tw-top-4 tw-right-0 tw-m-0 tw-text-xs'>
+                            {formik.errors.cuskontak}
+                          </p>
+                        }
+                      </div>
+                    </div>
+
+                    <div className='form-group mb-2'>
+                      <label
+                        htmlFor='exampleInputEmail2'
+                        className='tw-form-label tw-text-sm tw-font-bold tw-inline-block tw-mb-2 tw-text-gray-700'
+                      >
+                        Phone Number
+                      </label>
+                      <input
+                        type='text'
+                        className='tw-form-control tw-block tw-w-full tw-px-3 tw-py-2 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none'
+                        id='contact_person_telp'
+                        onChange={formik.handleChange}
+                        value={val.contact_person_telp}
+                        placeholder='Phone number'
+                      />
+
+                        {
+                          formik.touched.cuskontak && formik.errors.cuskontak && <p className='tw-absolute tw-text-red-500 -tw-top-4 tw-right-0 tw-m-0 tw-text-xs'>
+                            {formik.errors.cuskontak}
+                          </p>
+                        }
+                      </div>
+
+                      <div className='form-group mb-2'>
+                        <label
+                          htmlFor='exampleInputEmail2'
+                          className='tw-form-label tw-text-sm tw-font-bold tw-inline-block tw-mb-2 tw-text-gray-700'
+                        >
+                          Email
+                        </label>
+                      <input
+                        type='text'
+                        className='tw-form-control tw-block tw-w-full tw-px-3 tw-py-2 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none'
+                        id='Email'
+                        onChange={formik.handleChange}
+                        value={val.email_person}
+                        placeholder='Email'
+                      />
+                      {
+                          formik.touched.cuskontak && formik.errors.cuskontak && <p className='tw-absolute tw-text-red-500 -tw-top-4 tw-right-0 tw-m-0 tw-text-xs'>
+                            {formik.errors.cuskontak}
+                          </p>
+                      }
+                      </div>
+                    </div>
+                  )
+                  
+                })}
               </form>
             </div>
             <div className='modal-footer tw-flex tw-flex-shrink-0 tw-flex-wrap tw-items-center tw-justify-end tw-py-2 tw-px-6 tw-border-t tw-border-gray-200 tw-rounded-b-md'>

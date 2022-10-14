@@ -55,6 +55,7 @@ const ModalTambah = ({ val, token }) => {
       contact_person_telp: Yup.string().matches(phoneRegExp, 'Phone number is not valid').required('Phone number is required'),
     }),
     onSubmit: (values) => {
+      console.log(values);
       formik.setValues(val => ({
         ...val,
         cuskontak: val.cuskontak.concat(values)

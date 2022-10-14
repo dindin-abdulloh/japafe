@@ -72,7 +72,38 @@ const ModalDetail = ({ valAksi }) => {
                     { valAksi.email }
                     </td>
                   </tr>
-                  <tr className="tw-border-b">
+                  {valAksi.cuskontak.map((val) => {
+                    return (
+                      <div key={val.id}>
+
+                          <tr className="tw-border-b">
+                            <td className="tw-text-sm tw-text-gray-900 tw-font-bold tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-1/3">
+                              Contact Person
+                            </td>
+                            <td className="tw-text-sm tw-text-gray-900 tw-font-light tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-2/3">
+                            { val.contact_person }
+                            </td>
+                          </tr>
+                          <tr className="tw-border-b">
+                            <td className="tw-text-sm tw-text-gray-900 tw-font-bold tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-1/3">
+                              Phone Number
+                            </td>
+                            <td className="tw-text-sm tw-text-gray-900 tw-font-light tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-2/3">
+                              { val.contact_person_telp }
+                            </td>
+                          </tr>
+                          <tr className="tw-border-b">
+                            <td className="tw-text-sm tw-text-gray-900 tw-font-bold tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-1/3">
+                              Email
+                            </td>
+                            <td className="tw-text-sm tw-text-gray-900 tw-font-light tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-2/3">
+                              { val.email_person }
+                            </td>
+                          </tr>
+                      </div>
+                    )
+                  })}
+                  {/* <tr className="tw-border-b">
                     <td className="tw-text-sm tw-text-gray-900 tw-font-bold tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-1/3">
                       Contact Person
                     </td>
@@ -80,7 +111,7 @@ const ModalDetail = ({ valAksi }) => {
                     { valAksi.contact_person }
                     </td>
                   </tr>
-                  {/* <tr className="tw-border-b">
+                  <tr className="tw-border-b">
                     <td className="tw-text-sm tw-text-gray-900 tw-font-bold tw-px-6 tw-py-2 tw-whitespace-nowrap tw-w-1/3">
                       Phone Number
                     </td>

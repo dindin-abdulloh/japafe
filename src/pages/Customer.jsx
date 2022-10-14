@@ -64,6 +64,8 @@ const Customer = () => {
         phone: '',
         alamat_workshop: '',
         alamat_penerima: '',
+        cuskontak : []
+
     })
 
     const defaultToggleColumn = (toggleVal, columnField) => {
@@ -83,6 +85,7 @@ const Customer = () => {
     }
 
     const showModalHandler = (type, row = null) => {
+
         let elModal = null
         if (row !== null) {
             setValAksi(valAksi => ({
@@ -96,6 +99,7 @@ const Customer = () => {
                 phone: row.phone,
                 alamat_workshop: row.alamat_workshop,
                 alamat_penerima: row.alamat_penerima,
+                cuskontak : row.cuskontak
             }))
         }
 
