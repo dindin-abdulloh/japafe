@@ -1,4 +1,4 @@
-import { MdDashboard, MdKeyboardArrowRight, MdContentPaste } from 'react-icons/md'
+import { MdDashboard, MdKeyboardArrowRight, MdContentPaste, MdPeople, MdOutlineContactMail, MdInventory, MdOutlineFactCheck, MdCleanHands } from 'react-icons/md'
 const listMenu = [
     {
         id: 'dashboard',
@@ -17,21 +17,21 @@ const listMenu = [
                 id: 'supplier',
                 link: "/master-data/supplier",
                 title: "Supplier",
-                icon: MdContentPaste,
+                icon: MdInventory,
                 subMenu: null
             },
             {
                 id: 'customer',
                 link: "/master-data/customer",
                 title: "Customer",
-                icon: MdContentPaste,
+                icon: MdPeople,
                 subMenu: null
             },
             {
                 id: 'employe',
                 link: "/master-data/employe",
                 title: "Employe",
-                icon: MdContentPaste,
+                icon: MdOutlineContactMail,
                 subMenu: null
             },
         ]
@@ -46,14 +46,14 @@ const listMenu = [
                 id: 'quotation',
                 link: "marketing/quotation",
                 title: "Quotation",
-                icon: MdContentPaste,
+                icon: MdCleanHands,
                 subMenu: null
             },
             {
                 id: 'work-order-release',
                 link: "marketing/work-order-release",
                 title: "Work Order Release",
-                icon: MdContentPaste,
+                icon: MdOutlineFactCheck,
                 subMenu: null
             },
             {

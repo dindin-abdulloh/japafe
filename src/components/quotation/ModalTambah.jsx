@@ -291,7 +291,6 @@ const ModalTambah = ({ val, token }) => {
                         <input
                           onChange={formik.handleChange}
                           value={formik.values.address}
-                          disabled
                           type="text"
                           className={`${
                             formik.touched.address && formik.errors.address
@@ -319,7 +318,6 @@ const ModalTambah = ({ val, token }) => {
                         <input
                           onChange={formik.handleChange}
                           value={formik.values.city}
-                          disabled
                           type="text"
                           className={`${
                             formik.touched.city && formik.errors.city
@@ -368,6 +366,7 @@ const ModalTambah = ({ val, token }) => {
                           </option>
                           {cusKontak.length > 0 &&
                             cusKontak.map((i, idx) => {
+                              console.log(i);
                               return (
                                 <option key={idx} value={i.contact_person}>
                                   {i.contact_person}
