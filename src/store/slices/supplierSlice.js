@@ -47,9 +47,9 @@ export const editSupplier = createAsyncThunk(
       bank_akun,
       akun_name,
       akun_number,
-      contact_person_sup,
       ppn,
-      pph
+      pph,
+      cuskontak
     } = data
     const results = await axios.put(
       `supplier/${id}`,
@@ -64,9 +64,9 @@ export const editSupplier = createAsyncThunk(
         bank_akun,
         akun_name,
         akun_number,
-        contact_person_sup,
         ppn,
-        pph
+        pph,
+        cuskontak
       },
       { headers: headers }
     )

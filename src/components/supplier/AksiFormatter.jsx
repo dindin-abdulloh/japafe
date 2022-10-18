@@ -5,21 +5,21 @@ const AksiFormatter = ({ row, showModalHandler }) => {
   return (
     <>
       <div className='tw-flex tw-gap-2 tw-items-center tw-w-full'>
-        <button
+      <button
           onClick={() => {
             showModalHandler('detail', row)
           }}
-          className='hover:tw-text-gray-700 tw-text-gray-500 tw-transition tw-duration-300 tw-ease-in-out'
+          className='tw-w-[55px] tw-bg-[#08B382] tw-rounded-md tw-h-[26px] tw-text-[#FFFFFF] tw-text-[14px]'
         >
-          <MdDescription size={18} />
+          View
         </button>
         <button
           onClick={() => {
             showModalHandler('edit', row)
           }}
-          className='hover:tw-text-gray-700 tw-text-gray-500 tw-transition tw-duration-300 tw-ease-in-out'
+          className='tw-bg-[#E9787A] tw-rounded-md tw-text-[#FFFFFF] tw-text-[14px] tw-w-[55px] tw-h-[26px]'
         >
-          <MdCreate size={18} />
+          Edit
         </button>
         <button
           onClick={() => {

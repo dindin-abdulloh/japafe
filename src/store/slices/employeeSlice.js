@@ -11,7 +11,19 @@ export const getEmployees = createAsyncThunk(
     const results = await axios.get(`employe?limit=${perPage}&page=${page}`, {
       headers: headers
     })
-    console.log('jalan')
+    return results.data
+  }
+)
+
+export const getDepart = createAsyncThunk(
+  'employeeSlice/getDepart',
+  async({token = ''}) => {
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    }
+
+    const results = await axios.get(`depart`, {headers : headers})
     return results.data
   }
 )
@@ -36,8 +48,8 @@ export const addEmployee = createAsyncThunk(
     formData.append('kota', data.kota)
     formData.append('starjoin', data.starjoin)
     formData.append('sisa_cuti', data.sisa_cuti)
-    formData.append('emppen', JSON.stringify(data.emppen))
-    formData.append('emppel', JSON.stringify(data.emppel))
+    formData.append('emppen', data.emppen)
+    formData.append('emppel', data.emppel)
 
     data.emppel.forEach(item => {
       formData.append('upload', item.upload)
@@ -47,7 +59,7 @@ export const addEmployee = createAsyncThunk(
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
     }
-    const results = await axios.post('employe', formData, { headers: headers })
+    const results = await axios.post('employe', data, { headers: headers })
     return results.data
   }
 )
@@ -120,6 +132,13 @@ const initialState = {
     currentPage: 0,
     isLoading: false
   },
+  dataDepart : {
+    result: [],
+    page : 0,
+    limit : 0,
+    totalData: 0,
+    isLoading: false
+  },
   resEmployee: {
     type: '',
     success: false,
@@ -152,6 +171,24 @@ const employeeSlice = createSlice({
     },
     [getEmployees.rejected]: state => {
       state.dataEmployee.isLoading = false
+    },
+
+    // getDepartment
+    [getDepart.pending]: state => {
+      state.dataDepart.isLoading = true
+    },
+    [getDepart.fulfilled]: (state, action) => {
+      state.dataDepart = {
+        ...state.dataDepart,
+        result : action.payload.result,
+        page : action.payload.page,
+        limit : action.payload.limit,
+        totalData : action.payload.totalData,
+        isLoading: false
+      }
+    },
+    [getDepart.rejected]: state => {
+      state.dataDepart.isLoading = false
     },
 
     // addEmployee

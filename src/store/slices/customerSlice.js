@@ -50,7 +50,7 @@ export const addCustomer = createAsyncThunk(
 export const editCustomer = createAsyncThunk(
   'customerSlice/editCustomer',
   async ({ data = null, token = '' }) => {
-    const { id, nama, alamat, kota, email, phone,  } = data
+    const { id, nama, alamat, kota, email, phone, cuskontak } = data
     const headers = {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + token
@@ -63,7 +63,7 @@ export const editCustomer = createAsyncThunk(
         kota,
         email,
         phone,
-        
+        cuskontak
       },
       {
         headers: headers

@@ -32,6 +32,7 @@ const Employe = () => {
     const { data, limit, totalData, currentPage, isLoading } = useSelector(
         state => state.employeeSlice.dataEmployee
     )
+    
 
     const [isHiden, setIsHiden] = useState({
         departement: false,
@@ -288,6 +289,9 @@ const Employe = () => {
     useLayoutEffect(() => {
         dispatch(getEmployees({ token: token }))
     }, [])
+    
+    
+   
 
     useEffect(() => {
         console.log(data)

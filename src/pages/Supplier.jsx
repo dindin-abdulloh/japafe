@@ -1,11 +1,11 @@
 import React, { useState, memo, useLayoutEffect, useEffect } from 'react'
 // import BootstrapTable from 'react-bootstrap-table-next'
-import {
-    textFilter,
-    selectFilter,
-    customFilter,
-    FILTER_TYPES
-} from 'react-bootstrap-table2-filter'
+// import {
+//     textFilter,
+//     selectFilter,
+//     customFilter,
+//     FILTER_TYPES
+// } from 'react-bootstrap-table2-filter'
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css'
 import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css'
 import AksiFormatter from '../components/supplier/AksiFormatter'
@@ -21,13 +21,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSupplier, setSuccess } from '../store/slices/supplierSlice'
 import moment from 'moment'
 
-const classNameFilterForm =
-    'tw-form-control tw-flex tw-py-1 tw-px-2 tw-text-xs tw-font-normal tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded tw-transition tw-ease-in-out tw-m-0  focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-blue-600 focus:tw-outline-none'
-
 const Supplier = () => {
-    // console.log('====================================')
-    // console.log('page supplier')
-    // console.log('====================================')
     const [val, setVal] = useState({
         createID: ''
     })
@@ -37,6 +31,27 @@ const Supplier = () => {
     const { data, limit, totalData, currentPage, isLoading } = useSelector(
         state => state.supplierSlice.dataSupplier
     )
+
+    const initData = data.map((e) => {
+        return {
+            id : e.id,
+            id_suplier:e.id_suplier,
+            npwp : e.npwp,
+            suplier_type : e.suplier_type,
+            sup_name : e.sup_name,
+            alamat : e.alamat,
+            kota : e.kota,
+            phone : e.phone,
+            email : e.email,
+            contact_person_sup : e.cuskontak.map((e) => {
+                return e.contact_person
+            }),
+            ppn : e.ppn,
+            pph : e.pph,
+            cuskontak : e.cuskontak
+        }
+    })
+
 
     const [isHiden, setIsHiden] = useState({
         npwp: true,
@@ -50,6 +65,8 @@ const Supplier = () => {
         contact_person_sup: false,
         ppn: true,
         pph: true,
+        cuskontak : true
+
     })
 
     const [valAksi, setValAksi] = useState({
@@ -66,7 +83,8 @@ const Supplier = () => {
         akun_number: '',
         contact_person_sup: '',
         ppn: '',
-        pph: ''
+        pph: '',
+        cuskontak : []
     })
 
     const defaultToggleColumn = (toggleVal, columnField) => {
@@ -86,9 +104,6 @@ const Supplier = () => {
     }
 
     const showModalHandler = (type, row = null) => {
-        // console.log('====================================')
-        // console.log(type)
-        // console.log('====================================')
         let elModal = null
         if (row !== null) {
             setValAksi(valAksi => ({
@@ -107,6 +122,7 @@ const Supplier = () => {
                 contact_person_sup: row.contact_person_sup,
                 ppn: row.ppn,
                 pph: row.pph,
+                cuskontak : row.cuskontak
             }))
         }
 
@@ -319,7 +335,7 @@ const Supplier = () => {
         <>
             <div className='tw-bg-white tw-p-3 tw-rounded-lg'>
                 <MyTable
-                    data={data}
+                    data={initData}
                     columns={columns}
                     options={options}
                     defaultToggleColumn={defaultToggleColumn}

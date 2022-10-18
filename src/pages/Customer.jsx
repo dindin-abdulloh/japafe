@@ -251,7 +251,11 @@ const Customer = () => {
     }, [])
 
     return (
-        <>
+        <>  
+            <div className="tw-pt-[34.5px] tw-pb-[37px]">
+                <h1 className='tw-text-[#202224] tw-text-[32px] tw-font-[700]'>Customer</h1>
+                <p className='tw-text-[#202224] tew-text-[14px] tw-font-[400] tw-pt-[2px]'>{data.length} Customer Acquired </p>
+            </div>
             <div className='tw-bg-white tw-p-3 tw-rounded-lg'>
                 <MyTable
                     data={data}

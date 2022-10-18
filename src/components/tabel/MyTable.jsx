@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
-import { FaFileCsv } from 'react-icons/fa'
-import { MdSettings } from 'react-icons/md'
+import {MdPrint} from 'react-icons/md'
+import { MdOutlineFilterAlt } from 'react-icons/md'
 import BootstrapTable from 'react-bootstrap-table-next'
 import filterFactory from 'react-bootstrap-table2-filter'
 import paginationFactory, {
   PaginationProvider,
   PaginationTotalStandalone,
   PaginationListStandalone,
-  SizePerPageDropdownStandalone
+  // SizePerPageDropdownStandalone
 } from 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator'
 import overlayFactory from 'react-bootstrap-table2-overlay/dist/react-bootstrap-table2-overlay';
 import ToolkitProvider, { ColumnToggle } from 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit'
 import CustomToggleColumn from './CustomToggleColumn'
-import CustomSearch from './CustomSearch'
+// import CustomSearch from './CustomSearch'
 const MyTable = ({
   data,
   columns,
@@ -80,36 +80,28 @@ const MyTable = ({
           <PaginationProvider pagination={paginationFactory(options)}>
             {({ paginationProps, paginationTableProps }) => (
               <div>
-                <div className='tw-flex tw-items-center tw-justify-between tw-mb-2'>
+                <div className='tw-flex tw-items-center tw-justify-between tw-mb-2 tw-mt-[20px]'>
                   {
                     add && <div className='tw-flex tw-items-center tw-gap-2'>
-                      <button
-                        onClick={() => {
-                          showModalHandler('tambah')
-                        }}
-                        type='button'
-                        className='hover:tw-bg-red-600 tw-inline-block tw-px-6 tw-py-2 tw-bg-red-500 hover:tw-shadow-md tw-text-white tw-font-bold tw-text-xs tw-rounded tw-duration-300 tw-ease-in-out'
-                      >
-                        Add
-                      </button>
+                      <input
+                        onChange={searchHandler}
+                        type='search'
+                        className='tw-form-control tw-block tw-w-[582px] tw-px-4 tw-py-1 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-[#F5F6FA] tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded-full tw-h-[48px] tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none'
+                        placeholder='Search...'
+                      />
+                     
                       {/* <SizePerPageDropdownStandalone {...paginationProps} /> */}
                     </div>
                   }
 
                   {
-                    add && <div className='tw-flex tw-items-center tw-gap-2'>
-
-                      <input
-                        onChange={searchHandler}
-                        type='search'
-                        className='tw-form-control tw-block tw-w-full tw-px-2 tw-py-1 tw-text-sm tw-font-normal  tw-text-gray-700 tw-bg-white tw-bg-clip-padding tw-border tw-border-solid tw-border-gray-300 tw-rounded tw-transition tw-ease-in-out tw-m-0 focus:tw-text-gray-700 focus:tw-bg-white focus:tw-border-sky-600 focus:tw-outline-none'
-                        placeholder='Search...'
-                      />
+                    add && <div className='tw-flex tw-items-center tw-gap-2 tw-mt-[20px]'>
                       <button
                         type='button'
-                        className='tw-flex hover:tw-bg-gray-100 tw-rounded tw-p-2 tw-items-center tw-font-bold tw-text-xs tw-duration-150 tw-ease-in-out'
+                        className='tw-flex tw-gap-1 hover:tw-bg-gray-100 tw-rounded tw-p-2 tw-items-center tw-font-bold tw-text-xs tw-duration-150 tw-ease-in-out'
                       >
-                        <FaFileCsv size={16} />
+                        <MdPrint  size={16} />
+                        <span className='tw-text-[#202020] tw-text-[16px] tw-font-[400]'>Print</span>
                       </button>
                       <div className='dropstart tw-relative'>
                         <button
@@ -117,12 +109,14 @@ const MyTable = ({
                           data-bs-toggle='dropdown'
                           aria-expanded='false'
                           type='button'
-                          className='hover:tw-text-gray-500 hover:tw-bg-gray-200 tw-rounded-full tw-p-2 tw-relative tw-flex tw-items-center tw-font-bold tw-duration-150 tw-ease-in-out'
+                          className='hover:tw-text-gray-500 hover:tw-bg-gray-200 tw-rounded-full tw-p-2 tw-relative tw-flex tw-gap-1 tw-items-center tw-font-bold tw-duration-150 tw-ease-in-out'
                         >
-                          <MdSettings
+                          {/* <MdSettings
                             size={16}
                             className='tw-rotate-0 hover:tw-rotate-180 tw-transition-all tw-duration-300'
-                          />
+                          /> */}
+                          <MdOutlineFilterAlt/>
+                          <span className='tw-text-[#202020] tw-text-[16px] tw-font-[400]'>Filter</span>
                         </button>
                         <CustomToggleColumn
                           {...props.columnToggleProps}
@@ -130,11 +124,21 @@ const MyTable = ({
                           conditionHidden={conditionHidden}
                         />
                       </div>
+
+                      <button
+                        onClick={() => {
+                          showModalHandler('tambah')
+                        }}
+                        type='button'
+                        className='tw-w-[170px] tw-h-[47px] tw-bg-[#E9787A] tw-rounded-full tw-text-[14px] tw-font-semibold tw-text-[#FFFFFF] hover:tw-bg-red-500'
+                      >
+                        + New Customer
+                      </button>
                     </div>
                   }
                 </div>
 
-                <div>
+                <div className='tw-mt-[46px]'>
                   <BootstrapTable
                     remote={remote}
                     wrapperClasses='tw-overflow-x-auto table-isScroll tw-cursor-default'
